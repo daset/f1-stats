@@ -1,0 +1,70 @@
+<main>
+  <aside id="sidebar">
+    <mat-form-field appearance="fill">
+      <mat-label>Select a year</mat-label>
+      <mat-select (selectionChange)="loadResults($event)">
+        <mat-option *ngFor="let year of years" [value]="year">
+          {{ year }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </aside>
+  <section id="results" *ngIf="winners && !isLoading">
+    <div class="race-result" *ngFor="let winner of winners">
+      <div class="race-header">
+        <div class="round">
+          <h3>Round {{ winner.round }}</h3>
+        </div>
+      </div>
+      <table
+        mat-table
+        [dataSource]="winner.DriverStandings"
+        class="mat-elevation-z3"
+      >
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>Position</th>
+          <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+        </ng-container>
+
+        <!-- Points Column -->
+        <ng-container matColumnDef="points">
+          <th mat-header-cell *matHeaderCellDef>Points</th>
+          <td mat-cell *matCellDef="let element">{{ element.points }}</td>
+        </ng-container>
+
+        <!-- Driver Column -->
+        <ng-container matColumnDef="driver">
+          <th mat-header-cell *matHeaderCellDef>Driver</th>
+          <td mat-cell *matCellDef="let element">
+            <a href="{{ element.Driver.url }}" target="_blank"
+              >{{ element.Driver.givenName }}
+              {{ element.Driver.familyName | uppercase }}</a
+            >
+            <span>{{ element.Driver.nationality }}</span>
+          </td>
+        </ng-container>
+
+        <!-- Constructor Column -->
+        <ng-container matColumnDef="constructor">
+          <th mat-header-cell *matHeaderCellDef>Constructor</th>
+          <td mat-cell *matCellDef="let element">
+            <a href="{{ element.Constructors[0].url }}" target="_blank">{{
+              element.Constructors[0].name
+            }}</a>
+            <span>{{ element.Constructors[0].nationality }}</span>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </section>
+  <section id="preloader" *ngIf="isLoading">
+    <mat-progress-spinner color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+  </section>
+</main>
+
+<app-footer></app-footer>

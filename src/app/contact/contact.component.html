@@ -1,0 +1,72 @@
+<main>
+  <section id="form">
+    <form
+      class="text-center border border-light p-5"
+      [formGroup]="contactForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <p class="h4">Send a message to F1 driver</p>
+
+      <!-- Name -->
+
+      <input
+        type="text"
+        formControlName="contactFormName"
+        id="defaultContactFormName"
+        class="form-control"
+        placeholder="Name"
+      />
+
+      <!-- Email -->
+
+      <input
+        type="email"
+        formControlName="contactFormEmail"
+        id="defaultContactFormEmail"
+        class="form-control"
+        placeholder="E-mail"
+      />
+
+      <!-- Driver -->
+
+      <input
+        matInput
+        placeholder="Driver name"
+        formControlName="contactFormDriver"
+        class="form-control"
+      />
+
+      <!-- Subject-->
+
+      <input
+        matInput
+        placeholder="Subject"
+        formControlName="contactFormSubject"
+        class="form-control"
+      />
+
+      <!-- Message -->
+      <div class="form-group">
+        <textarea
+          formControlName="contactFormMessage"
+          class="form-control rounded-0"
+          id="exampleFormControlTextarea2"
+          rows="5"
+          cols="25"
+          placeholder="Message"
+        ></textarea>
+      </div>
+
+      <!-- Send button -->
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="disabledSubmitButton"
+      >
+        Send
+      </button>
+    </form>
+  </section>
+</main>
+<app-footer></app-footer>

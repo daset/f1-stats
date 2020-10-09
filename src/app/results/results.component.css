@@ -1,0 +1,63 @@
+main {
+  display: flex;
+}
+#results {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+#preloader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+.race-header {
+  padding: 10px;
+  display: flex;
+  width: 98%;
+}
+.race-result {
+  margin-bottom: 40px;
+}
+table {
+  width: 99%;
+}
+table a {
+  color: darkblue;
+  text-decoration: none;
+  margin-right: 10px;
+}
+table a:hover {
+  color: blue;
+  text-decoration: underline;
+}
+table span {
+  opacity: 0.8;
+  font-style: oblique;
+}
+.circuit {
+  text-align: right;
+  flex-grow: 1;
+}
+#results .circuit a {
+  color: #3f51b5;
+  text-decoration: none;
+}
+#results .circuit a:hover {
+  color: #3f51b5;
+  text-decoration: underline;
+}
+.circuit mat-icon {
+  vertical-align: middle;
+  zoom: 1.5;
+  transform: rotate(-45deg);
+}
+p.dimmed {
+  color: #444;
+  font-size: small;
+}
+.race-header h3,
+.race-header p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}

@@ -1,0 +1,15 @@
+main {
+  display: flex;
+}
+#form {
+  flex-grow: 1;
+  margin-left: 200px;
+}
+input.form-control,
+textarea,
+button {
+  display: block;
+  font-size: medium;
+  padding: 5px;
+  margin-bottom: 10px;
+}
